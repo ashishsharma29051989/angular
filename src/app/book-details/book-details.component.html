@@ -1,0 +1,32 @@
+<h3 class="header">Book Details</h3>
+<form class="form" data-test-id="form">
+  <div class="form-row">
+    <label for="min-price" class="col-form-label">Min Price</label>
+    <div class="col-3">
+      <input type="number" class="form-control mb-2" id="min-price" data-test-id="min_price" name="min_price"
+        placeholder="Min Price" ngModel>
+    </div>
+    <label for="max-price" class="col-form-label">Max Price</label>
+    <div class="col-3">
+      <input type="number" class="form-control" id="max-price" name="max_price" data-test-id="max_price"
+        placeholder="Max Price" ngModel>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary mb-2" data-test-id="filter_button">Filter</button>
+      <button type="button" class="btn btn-danger mb-2" data-test-id="reset_button">Reset
+        Filter</button>
+    </div>
+  </div>
+</form>
+<span class="text-danger" data-test-id="msg1">minimum price should be less than maximum price</span>
+<div class="row box">
+  <p data-test-id="msg">No book avilable in given price range</p>
+  <div class="card col-5 custom-margin" data-test-id="card">
+    <div class="card-body">
+      <h5 class="card-title"> book_name </h5>
+      <h6 class="card-subtitle mb-2 text-muted">written by  author </h6>
+      <p class="card-text"> description </p>
+      <a href="#" class="card-link">Rs: product_costprice </a>
+    </div>
+  </div>
+</div>
