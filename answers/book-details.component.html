@@ -1,0 +1,119 @@
+<h3 class="header">The Best Book</h3>
+<form class="form" (ngSubmit)="onSubmit()" #f="ngForm" data-test-id="form">
+  <div class="form-row">
+    <label for="min-price" class="col-form-label">Min SalePrice</label>
+    <div class="col-3">
+      <input type="number" class="form-control mb-2" 
+      id="min-price" data-test-id="min_price" name="min_price"
+        placeholder="Min Price" ngModel>
+    </div>
+    <label for="max-price" class="col-form-label">Max SalePrice</label>
+    <div class="col-3">
+      <input type="number" class="form-control" id="max-price" name="max_price" data-test-id="max_price"
+        placeholder="Max Price" ngModel>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary mb-2" data-test-id="filter_button">Filter</button>
+      <button type="button" class="btn btn-danger mb-2" data-test-id="reset_button" (click)="reset()">Reset
+        Filter</button>
+    </div>
+  </div>
+</form>
+
+
+<div class="form row">
+<div class="col-md-3">
+  <div >
+    <input
+    class="form-check-input"
+    type="radio"
+    name="stars"
+    (change)="setStars(3)"
+    
+  />
+  <label class="form-check-label" for="flexRadioDefault1"> 3 Stars and above  </label>
+  </div>
+
+  <div>
+
+    <input
+    class="form-check-input"
+    type="radio"
+    name="stars"
+    (change)="setStars(4)"
+  />
+  <label class="form-check-label" for="flexRadioDefault2"> 4 Stars and above  </label>
+  </div>
+<br>
+  <div>
+     <button class="btn btn-primary mb-2" (click)="filter_stars()"> Filter by Stars</button>
+  </div>
+</div>
+
+<div class="col-md-3">
+
+  <input type="text" class="form-control" id="search" name="search" placeholder="Search"
+  placeholder="Search" [(ngModel)]="search_query">
+<br>
+  <button class="btn btn-primary mb-2" (click)="search_now()"> Search by Book/Author Name</button>
+</div>
+
+<div class="col-md-3 offset-md-1">
+  <div >
+    <input
+    class="form-check-input"
+    type="radio"
+    name="flexRadioDefault"
+    (change)="setSort('sale')"
+  />
+  <label class="form-check-label" for="flexRadioDefault1"> Sort bt Selling Price  </label>
+  </div>
+
+  <div>
+
+    <input
+    class="form-check-input"
+    type="radio"
+    name="flexRadioDefault"
+    (change)="setSort('discount')"
+  />
+  <label class="form-check-label" for="flexRadioDefault1"> Sort by Discount  </label>
+  </div>
+
+  <div>
+
+    <input
+    class="form-check-input"
+    type="radio"
+    name="flexRadioDefault"
+    (change)="setSort('rating')"
+  />
+  <label class="form-check-label" for="flexRadioDefault1"> Sort by Rating  </label>
+  </div>
+<br>
+  <div>
+     <button class="btn btn-primary mb-2" (click)="sort_by_param()" > Sort Now</button>
+  </div>
+</div>
+
+
+</div>
+
+
+<button type="button" class="btn btn-danger mb-2"  (click)="resetAll()">Reset
+  All Filters</button>
+
+<span *ngIf="!valid" class="text-danger" data-test-id="msg1">minimum price should be less than maximum price</span>
+<div class="row box">
+  <p *ngIf="bookView.length===0" data-test-id="msg">No book avilable in given parameters</p>
+  <div class="card col-5 custom-margin" *ngFor="let i of bookView" data-test-id="card">
+    <div class="card-body">
+      <h5 class="card-title">{{i.book_name}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">written by {{i.author}}</h6>
+      <p class="card-text">{{i.description}}</p>
+      <p class="card-text">Rating {{i.rating}}</p>
+      <a href="#" class="card-link">Cost Price - Rs:{{i.product_costprice}}</a>
+      <a href="#" class="card-link">Selling Price - Rs:{{i.product_saleprice}}</a>
+    </div>
+  </div>
+</div>
