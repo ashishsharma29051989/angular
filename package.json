@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --port 9090",
+    "start": "ng serve --host 0.0.0.0 --port 9090 --disableHostCheck",
     "build": "ng build",
     "sample-tests": "ng test --include **/book-details/*.spec.ts",
     "background-tests": "ng test --include **/app/*.spec.ts",
